@@ -32,6 +32,11 @@ def plshow(im,title='MINE'):
 sd_path = 'dataset/ISTD/train_A'
 mask_path = 'dataset/ISTD/train_B'
 sdfree_path = 'dataset/ISTD/train_C_fixed_ours'
+
+sd_path = '/home/balin/exper/shadow_removal/Auto-Exposure/data/ISTD_Dataset/train/train_A'
+mask_path = '/home/balin/exper/shadow_removal/Auto-Exposure/data/ISTD_Dataset/train/train_B'
+sdfree_path = '/home/balin/exper/shadow_removal/Auto-Exposure/data/ISTD_Dataset/train/train_C'
+
 out = 'dataset/ISTD/train_param'
 
 
@@ -48,7 +53,6 @@ for d in ['train_A','train_B','train_C']:
 im_list  =  [f for f in listdir(sd_path) if isfile(join(sd_path, f)) and f.endswith('png')]
 print(len(im_list),im_list[0])
 kernel = np.ones((5,5),np.uint8)
-
 
 def im_relit(Rpopt,Gpopt,Bpopt,dump):
     #fc this shit

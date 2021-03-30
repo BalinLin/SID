@@ -14,7 +14,7 @@ from PIL import Image
 from util.util import sdmkdir
 class Predict:
     def __init__(self,opt):
-        opt.gpu_ids=[3]
+        opt.gpu_ids=[0]
         opt.checkpoints_dir ='../checkpoints/'  
         opt.netG = 'RESNEXT'
         opt.fineSize = 256
@@ -28,8 +28,8 @@ class Predict:
     
     def ISTD_test(self):
         opt = self.opt
-        opt.mask_test = '/nfs/bigneuron/add_disk0/hieule/data/datasets/ISTD_Dataset/Mean_Teacher_SD/ISTD_crf'
-        dataset = SingleDataset('/nfs/bigneuron/add_disk0/hieule/data/datasets/ISTD_Dataset/test/test_A',opt)
+        opt.mask_test = '/home/balin/exper/shadow_removal/Auto-Exposure/data/ISTD_Dataset/test/test_B'
+        dataset = SingleDataset('/home/balin/exper/shadow_removal/Auto-Exposure/data/ISTD_Dataset/test/test_A',opt)
         opt.results_dir ='./ISTD_b/' 
         self.eval_backend_output_only(dataset,opt)
     

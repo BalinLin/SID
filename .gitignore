@@ -131,3 +131,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# data
+/data_processing/dataset
+/src/ISTD_b

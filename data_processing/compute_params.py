@@ -33,6 +33,10 @@ sd_path = 'dataset/ISTD/train_A'
 mask_path = 'dataset/ISTD/train_B'
 sdfree_path = 'dataset/ISTD/train_C_fixed_ours'
 
+sd_path = '/home/balin/exper/shadow_removal/Auto-Exposure/data/ISTD_Dataset/train/train_A'
+mask_path = '/home/balin/exper/shadow_removal/Auto-Exposure/data/ISTD_Dataset/train/train_B'
+sdfree_path = '/home/balin/exper/shadow_removal/Auto-Exposure/data/ISTD_Dataset/train/train_C'
+
 out = 'dataset/ISTD/train_params/'
 
 if not os.path.exists(out):
@@ -56,7 +60,7 @@ def im_relit(Rpopt,Gpopt,Bpopt,dump):
     return sdim
 
 errors= []
-for im in im_list[10:20]:
+for im in im_list:
     sd = np.asarray(Image.open(join(sd_path,im)))
     mean_sdim = np.mean(sd,axis=2)
     
@@ -93,12 +97,12 @@ for im in im_list[10:20]:
     
     relitim = im_relit(Rpopt,Gpopt,Bpopt,sd)
     
-    final = sd.copy()
-    final[tuple([i,j])] = relitim[tuple([i,j])]
-    final[final>255] =255
-    final[final<0] = 0
+    # final = sd.copy()
+    # final[tuple([i,j])] = relitim[tuple([i,j])]
+    # final[final>255] =255
+    # final[final<0] = 0
 
-    plshow(final)
+    # plshow(final)
     
     error = np.mean(np.abs(relitim[tuple([i,j])].astype(np.float) - sdfree[tuple([i,j])]).astype(np.float))
     print(error,Rpopt,Gpopt,Bpopt)
