@@ -28,8 +28,8 @@ class Predict:
     
     def ISTD_test(self):
         opt = self.opt
-        opt.mask_test = '/home/balin/exper/shadow_removal/Auto-Exposure/data/ISTD_Dataset/test/test_B'
-        dataset = SingleDataset('/home/balin/exper/shadow_removal/Auto-Exposure/data/ISTD_Dataset/test/test_A',opt)
+        opt.mask_test = '/home/balin/exper/shadow_removal/Dataset/ISTD_Dataset/test/test_B'
+        dataset = SingleDataset('/home/balin/exper/shadow_removal/Dataset/ISTD_Dataset/test/test_A',opt)
         opt.results_dir ='./ISTD_b/' 
         self.eval_backend_output_only(dataset,opt)
     
